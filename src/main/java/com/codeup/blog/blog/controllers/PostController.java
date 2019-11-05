@@ -3,6 +3,7 @@ package com.codeup.blog.blog.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 
@@ -31,19 +32,34 @@ public class PostController {
         return "create a new post";
     }
 
-    @PostMapping("/roll-dice")
+    @GetMapping("/roll-dice")
     public String showPage() {
         return "roll-dice";
     }
 
-    @PostMapping("/roll-dice/${guess}")
+    @PostMapping("/roll-dice")
     public String rollDice(@RequestParam(name = "guess") String guess, Model vModel) {
         //Get a random number here
-        double x = Math.floor(Math.random() * Math.floor(6));
 
 
+        double x = Math.floor(Math.random() * Math.floor(7));
+
+        if(x == 0) {
+            x = x + 1;
+        }
+        int y = (int) x;
+        vModel.addAttribute("userNumber", guess);
+
+        int guessNum = (int) Double.parseDouble(guess);
+
+
+        if(y == guessNum) {
+            vModel.addAttribute("success", "Hey you guessed right");
+        } else {
+            vModel.addAttribute("failure", "You got it wrong");
+        }
         //send it back to page and display with message
-        vModel.addAttribute("randomNumber", x);
+        vModel.addAttribute("randomNumber", y);
 
         //return to /roll-dice
 

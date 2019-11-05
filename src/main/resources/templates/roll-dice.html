@@ -9,12 +9,37 @@
 <h1>Guess the Dice Roll</h1>
 
 
-    <a href="/roll-dice/1">1</a>
-    <a href="/roll-dice/2">2</a>
-    <a href="/roll-dice/3">3</a>
-    <a href="/roll-dice/4">4</a>
-    <a href="/roll-dice/5">5</a>
-    <a href="/roll-dice/6">6</a>
+    <form action="/roll-dice" method="POST">
+        <input type="hidden" name="guess" value="1">
+        <button>1</button>
+    </form>
+    <form action="/roll-dice" method="POST">
+        <input type="hidden" name="guess" value="2">
+        <button>2</button>
+    </form>
+    <form action="/roll-dice" method="POST">
+        <input type="hidden" name="guess" value="3">
+        <button>3</button>
+    </form>
+    <form action="/roll-dice" method="POST">
+        <input type="hidden" name="guess" value="4">
+        <button>4</button>
+    </form>
+    <form action="/roll-dice" method="POST">
+        <input type="hidden" name="guess" value="5">
+        <button>5</button>
+    </form>
+    <form action="/roll-dice" method="POST">
+        <input type="hidden" name="guess" value="6">
+        <button>6</button>
+    </form>
+
+    <h2> The random dice roll was: <span th:text="${randomNumber}"></span></h2>
+
+    <h2> You guess was: <span th:text="${userNumber}"></span></h2>
+
+    <h2 th:text="${success}"></h2>
+    <h2 th:text="${failure}"></h2>
 
 
 </body>
