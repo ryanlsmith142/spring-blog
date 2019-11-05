@@ -1,23 +1,33 @@
 package com.codeup.blog.blog.controllers;
 
+import com.codeup.blog.blog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 
 public class PostController {
+
     @GetMapping("/posts")
-    @ResponseBody
     public String index() {
-        return "posts index page";
+        List<String> posts = new ArrayList<>();
+
+
+        return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
-    @ResponseBody
-    public String viewIndividualPost(@PathVariable long id) {
-        return "view an individual page " + id;
+    public String viewIndividualPost(@PathVariable long id, Model vModel) {
+        Post individualPost = new Post(id,"Ten facts about dogs", "Here's ten facts about dogs.");
+
+        vModel.addAttribute("individualPost", individualPost);
+
+        return "posts/show";
     }
 
     @GetMapping("/posts/create")
@@ -31,6 +41,7 @@ public class PostController {
     public String createPost(@RequestParam String title, @RequestParam String body) {
         return "create a new post";
     }
+//Views Exercise 1
 
     @GetMapping("/roll-dice")
     public String showPage() {
