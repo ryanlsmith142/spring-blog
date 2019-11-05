@@ -1,6 +1,7 @@
 package com.codeup.blog.blog.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -29,4 +30,27 @@ public class PostController {
     public String createPost(@RequestParam String title, @RequestParam String body) {
         return "create a new post";
     }
+
+    @PostMapping("/roll-dice")
+    public String showPage() {
+        return "roll-dice";
+    }
+
+    @PostMapping("/roll-dice/${guess}")
+    public String rollDice(@RequestParam(name = "guess") String guess, Model vModel) {
+        //Get a random number here
+        double x = Math.floor(Math.random() * Math.floor(6));
+
+
+        //send it back to page and display with message
+        vModel.addAttribute("randomNumber", x);
+
+        //return to /roll-dice
+
+        return "roll-dice";
+    }
+
+
+
+
 }
