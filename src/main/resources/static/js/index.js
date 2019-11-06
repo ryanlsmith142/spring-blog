@@ -11,10 +11,15 @@ const editMovieClickEvent = () => {
             document.getElementById('modal').style.display = "block";
 
             let currentMovieId = editButtons[i].id;
-            console.log(currentMovieId);
+
+            let hiddenInput = `<input type="hidden" name="id" value=${currentMovieId}>`;
+
+
+            document.getElementById("saveChanges").innerHTML = hiddenInput;
             return currentMovieId;
         }); // event listener
     } //for
 }; //editMovieClickEvent()
 
 editMovieClickEvent();
+

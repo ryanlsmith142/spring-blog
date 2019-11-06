@@ -41,6 +41,14 @@ public class PostController {
         return "posts/index";
     }
 
+    @PostMapping("/posts/edit")
+    public String editPost(@RequestParam(name="id") String id, @RequestParam(name="title") String title, @RequestParam(name="body") String body, Model vModel) {
+        long postId = Long.parseLong(id);
+        Post newPost = new Post(postId, title, body);
+        postDao.save(newPost);
+        vModel.addAttribute("posts", postDao.findAll());
+        return "posts/index";
+    }
 
     @GetMapping("/posts/create")
     @ResponseBody
