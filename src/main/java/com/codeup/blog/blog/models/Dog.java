@@ -5,12 +5,13 @@ import javax.persistence.*;
 @Entity
 @Table(name="dogs")
 public class Dog {
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(nullable=false, columnDefinition = "int(11) UNSIGNED")
     private long id;
 
-    @Column(nullable=false, columnDefinition="tinyint(3) UNSIGNED")
+    @Column(unique=true, nullable=false, columnDefinition="tinyint(3) UNSIGNED")
     private long age;
 
     @Column(nullable=false, columnDefinition="varchar(200)")
