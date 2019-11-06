@@ -29,11 +29,18 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String viewIndividualPost(@PathVariable long id, Model vModel) {
-
         vModel.addAttribute("post", postDao.getOne(id));
-
         return "posts/show";
     }
+
+    @PostMapping("/posts")
+    public String deletePost(@RequestParam(name="id")String id, Model vModel) {
+        long postId = Long.parseLong(id);
+        postDao.deleteById(postId);
+        vModel.addAttribute("posts", postDao.findAll());
+        return "posts/index";
+    }
+
 
     @GetMapping("/posts/create")
     @ResponseBody
