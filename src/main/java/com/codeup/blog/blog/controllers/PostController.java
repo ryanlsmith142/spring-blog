@@ -1,5 +1,6 @@
 package com.codeup.blog.blog.controllers;
 
+import com.codeup.blog.blog.dao.PostRepository;
 import com.codeup.blog.blog.models.Post;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +14,11 @@ import java.util.List;
 
 public class PostController {
 
-    //Initialize arraylist outside;
+    private final PostRepository postDao;
 
-    //Mock DaoFactory
 
-    public PostController() {
-        //create rrayList of Post Objects
-
-        //add objects to array list
+    public PostController(PostRepository postDao) {
+        this.postDao = postDao;
     }
 
     @GetMapping("/posts")
@@ -51,62 +49,5 @@ public class PostController {
     public String createPost(@RequestParam String title, @RequestParam String body) {
         return "create a new post";
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Views Exercise 1
-
-    @GetMapping("/roll-dice")
-    public String showPage() {
-        return "roll-dice";
-    }
-
-    @PostMapping("/roll-dice")
-    public String rollDice(@RequestParam(name = "guess") String guess, Model vModel) {
-        //Get a random number here
-
-
-        double x = Math.floor(Math.random() * Math.floor(7));
-
-        if(x == 0) {
-            x = x + 1;
-        }
-        int y = (int) x;
-        vModel.addAttribute("userNumber", guess);
-
-        int guessNum = (int) Double.parseDouble(guess);
-
-
-        if(y == guessNum) {
-            vModel.addAttribute("success", "Hey you guessed right");
-        } else {
-            vModel.addAttribute("failure", "You got it wrong");
-        }
-        //send it back to page and display with message
-        vModel.addAttribute("randomNumber", y);
-
-        //return to /roll-dice
-
-        return "roll-dice";
-    }
-
-
-
 
 }

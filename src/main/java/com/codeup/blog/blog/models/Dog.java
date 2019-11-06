@@ -2,9 +2,9 @@ package com.codeup.blog.blog.models;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name="dogs", uniqueConstraints = @UniqueConstraint(name = "UK_name_AND_reside_state", columnNames={"name", "resideState"}))
+//Removed Entity annotation so that it wouldn't be created inside of database
 
+@Table(name="dogs", uniqueConstraints = @UniqueConstraint(name = "UK_name_AND_reside_state", columnNames={"name", "resideState"}))
 public class Dog {
 
     public Dog(){}

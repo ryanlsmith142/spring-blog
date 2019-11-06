@@ -11,13 +11,14 @@ public class Post {
     @Column(nullable=false, columnDefinition = "int(11) UNSIGNED")
     private long id;
 
-    @Column(nullable=false, columnDefinition = "VARCHAR(255)")
+    @Column(nullable=false)
     private String title;
 
-    @Column(columnDefinition="TEXT DEFAULT 'No Description'")
+    @Column(columnDefinition="TEXT")
     private String body;
 
     public Post(){}
+
 
     public Post(long id, String title, String body) {
         this.id = id;
