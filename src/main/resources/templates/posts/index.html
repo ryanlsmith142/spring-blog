@@ -6,7 +6,9 @@
     <th:block th:replace="fragments/header :: main-header"/>
 </head>
 <body>
+
     <th:block th:replace="fragments/navbar"/>
+
     <div th:each="post : ${posts}">
         <h2 th:text="${post.title}"></h2>
         <p th:text="${post.body}"></p>
@@ -14,7 +16,10 @@
         <form action="/posts" method="POST">
             <button type="submit">Delete Post</button>
         </form>
+        <button th:id="${post.id}" class="openModal" type="button">Edit</button>
     </div>
+
+    <th:block th:replace="fragments/modal :: modal"/>
     <th:block th:replace="fragments/footer :: main-footer"/>
 </body>
 </html>
