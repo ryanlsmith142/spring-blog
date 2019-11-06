@@ -1,15 +1,30 @@
 package com.codeup.blog.blog.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="posts")
 public class Post {
+
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(nullable=false, columnDefinition = "int(11) UNSIGNED")
     private long id;
+
+    @Column(nullable=false, columnDefinition = "VARCHAR(255)")
     private String title;
+
+    @Column(columnDefinition="TEXT DEFAULT 'No Description'")
     private String body;
+
+    public Post(){}
 
     public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
     }
+
     public long getId() {
         return id;
     }
