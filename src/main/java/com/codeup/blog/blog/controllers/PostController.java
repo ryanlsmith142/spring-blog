@@ -22,18 +22,15 @@ public class PostController {
     }
 
     @GetMapping("/posts")
-    public String index() {
-        List<String> posts = new ArrayList<>();
-
-
+    public String index(Model vModel) {
+        vModel.addAttribute("posts", postDao.findAll());
         return "posts/index";
     }
 
     @GetMapping("/posts/{id}")
     public String viewIndividualPost(@PathVariable long id, Model vModel) {
-        Post individualPost = new Post(id,"Ten facts about dogs", "Here's ten facts about dogs.");
 
-        vModel.addAttribute("individualPost", individualPost);
+        vModel.addAttribute("post", postDao.getOne(id));
 
         return "posts/show";
     }

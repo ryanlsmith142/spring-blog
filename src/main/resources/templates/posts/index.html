@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>All Posts</title>
+</head>
+<body>
+
+<div th:each="post : ${posts}">
+    <h2 th:text="${post.title}"></h2>
+    <p th:text="${post.body}"></p>
+    <input type="hidden" name="${allPosts.id}" value="${allPosts.id}">
+</div>
+
+</body>
+</html>

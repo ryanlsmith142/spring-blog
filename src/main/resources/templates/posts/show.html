@@ -2,14 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Individual Ad</title>
+    <title>Individual Post</title>
 </head>
 <body>
-
-
-<h1 th:text="${individualPost.title}"></h1>
-<p th:text="${individualPost.body}"></p>
-<input type="hidden" name="${individualPost.id}" value="${individualPost.id}">
-
+    <div>
+        <h1 th:text="${post.title}"></h1>
+        <p th:text="${post.body}"></p>
+        <input type="hidden" name="id" th:value="${post.id}">
+    </div>
 </body>
 </html>
