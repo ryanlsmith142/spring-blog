@@ -13,6 +13,16 @@ import java.util.List;
 
 public class PostController {
 
+    //Initialize arraylist outside;
+
+    //Mock DaoFactory
+
+    public PostController() {
+        //create rrayList of Post Objects
+
+        //add objects to array list
+    }
+
     @GetMapping("/posts")
     public String index() {
         List<String> posts = new ArrayList<>();
@@ -41,6 +51,25 @@ public class PostController {
     public String createPost(@RequestParam String title, @RequestParam String body) {
         return "create a new post";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Views Exercise 1
 
     @GetMapping("/roll-dice")
