@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:fragment="head">
-    <meta charset="UTF-8" />
-    <title>Home</title>
-</head>
-<body>
-<nav th:fragment="navbar">
-    <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/">Blog Posts</a></li>
-        <li><a href="/">About</a></li>
-    </ul>
-</nav>
-</body>
-</html>
+
+<th:block th:fragment="main-navbar">
+    <nav class="nav nav-pills flex-column flex-sm-row">
+        <a class="flex-sm-fill text-sm-center nav-link active" href="/">Home</a>
+        <a class="flex-sm-fill text-sm-center nav-link" href="/posts">Blog Posts</a>
+    </nav>
+</th:block>
+
+<!--Copy and paste to utilize this fragment in your file-->
+
