@@ -13,8 +13,7 @@
         <h2 th:text="${post.title}"></h2>
         <p th:text="${post.body}"></p>
 
-        <form action="/posts" method="POST">
-            <input type="hidden" name="id" th:value="${post.id}">
+        <form th:action="@{'/posts/' + ${post.id} + '/delete' }" method="POST">
             <button type="submit">Delete Post</button>
         </form>
 

@@ -33,12 +33,10 @@ public class PostController {
         return "posts/show";
     }
 
-    @PostMapping("/posts")
-    public String deletePost(@RequestParam(name="id")String id, Model vModel) {
-        long postId = Long.parseLong(id);
-        postDao.deleteById(postId);
-        vModel.addAttribute("posts", postDao.findAll());
-        return "posts/index";
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable long id) {
+        postDao.deleteById(id);
+        return "redirect:/posts";
     }
 
     @PostMapping("/posts/edit")

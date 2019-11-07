@@ -3,13 +3,15 @@ package com.codeup.blog.blog.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name="post_details")
 public class PostDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, columnDefinition"int(11) UNSIGNED")
+    @Column(nullable = false, columnDefinition="int(11) UNSIGNED")
     private long id;
 
+    @Column(columnDefinition = "boolean")
     private boolean isAwesome;
 
     @Column(columnDefinition =  "TEXT")
@@ -17,6 +19,9 @@ public class PostDetails {
 
     @Column(length = 255)
     private String topicDescription;
+
+    @OneToOne
+    private Post post;
 
     public PostDetails(){}
 

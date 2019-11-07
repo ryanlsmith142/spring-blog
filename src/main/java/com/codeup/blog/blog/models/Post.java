@@ -17,6 +17,9 @@ public class Post {
     @Column(columnDefinition="TEXT")
     private String body;
 
+    @OneToOne(mappedBy = "post")
+    private PostDetails postDetails;
+
     public Post(){}
 
     public Post(long id, String title, String body) {
