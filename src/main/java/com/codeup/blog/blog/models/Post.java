@@ -17,7 +17,7 @@ public class Post {
     @Column(columnDefinition="TEXT")
     private String body;
 
-    @OneToOne(mappedBy = "post")
+    @OneToOne
     private PostDetails postDetails;
 
     public Post(){}
@@ -50,6 +50,14 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public PostDetails getPostDetails() {
+        return postDetails;
+    }
+
+    public void setPetDetails(PostDetails petDetails) {
+        this.postDetails = petDetails;
     }
 
 

@@ -12,10 +12,13 @@ const editMovieClickEvent = () => {
 
             let currentMovieId = editButtons[i].id;
 
+
             let hiddenInput = `<input type="hidden" name="id" value=${currentMovieId}>`;
 
+            document.getElementById('modalForm').setAttribute("action", `/posts/${currentMovieId}/edit`);
 
             document.getElementById("saveChanges").innerHTML = hiddenInput;
+
             return currentMovieId;
         }); // event listener
     } //for

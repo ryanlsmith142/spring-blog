@@ -2,6 +2,7 @@ package com.codeup.blog.blog.controllers;
 
 import com.codeup.blog.blog.dao.PostRepository;
 import com.codeup.blog.blog.models.Post;
+import com.codeup.blog.blog.models.PostDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,15 +40,24 @@ public class PostController {
         return "redirect:/posts";
     }
 
-    @PostMapping("/posts/edit")
-    public String editPost(@RequestParam(name="id") String id, @RequestParam(name="title") String newTitle, @RequestParam(name="body") String newBody, Model vModel) {
-        long postId = Long.parseLong(id);
-        Post oldPost = postDao.getOne(postId);
+    @PostMapping("/posts/{id}/edit")
+    public String editPost(@PathVariable long id, @RequestParam(name="title") String newTitle, @RequestParam(name="body") String newBody, Model vModel) {
+        Post oldPost = postDao.getOne(id);
         oldPost.setTitle(newTitle);
         oldPost.setBody(newBody);
         postDao.save(oldPost);
-        vModel.addAttribute("posts", postDao.findAll());
-        return "posts/index";
+        return "redirect:/posts";
+    }
+
+    @GetMapping("/posts/{id}/historyOfPost")
+
+    public String getHistoryOfPost(@PathVariable long id, Model vModel) {
+
+        Post post = postDao.getOne(id);
+
+        vModel.addAttribute("post", post);
+
+        return "posts/historyOfPost";
     }
 
     @GetMapping("/posts/create")

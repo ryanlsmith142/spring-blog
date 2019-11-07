@@ -20,7 +20,7 @@ public class PostDetails {
     @Column(length = 255)
     private String topicDescription;
 
-    @OneToOne
+    @OneToOne(mappedBy = "postDetails")
     private Post post;
 
     public PostDetails(){}
@@ -62,5 +62,13 @@ public class PostDetails {
 
     public void setTopicDescription(String topicDescription) {
         this.topicDescription = topicDescription;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
     }
 }
