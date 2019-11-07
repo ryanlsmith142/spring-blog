@@ -23,6 +23,8 @@ public class PostImage {
         this.post = post;
     }
 
+    public PostImage(){}
+
     public long getId() {
         return id;
     }
@@ -58,5 +60,6 @@ public class PostImage {
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;
+
 
 }

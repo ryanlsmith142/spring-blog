@@ -23,6 +23,7 @@ public class PostDetails {
     @OneToOne(mappedBy = "postDetails")
     private Post post;
 
+
     public PostDetails(){}
 
     public PostDetails(long id, boolean isAwesome, String historyOfPost, String topicDescription) {

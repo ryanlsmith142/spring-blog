@@ -5,10 +5,11 @@
     <title>View Images</title>
 </head>
 <body>
+    <div th:text="${post.title}"></div>
 
     <div th:each="image : ${post.images}">
         <img th:src="${image.url}">
     </div>
-
+<h1>Hey There</h1>
 </body>
 </html>
