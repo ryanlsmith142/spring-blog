@@ -21,8 +21,17 @@ public class Post {
     @OneToOne
     private PostDetails postDetails;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List<PostImage> images;
+
+    public List<PostImage> getImages() {
+        return images;
+    }
+
+    public void setImages(List<PostImage> images) {
+        this.images = images;
+    }
 
     public Post(){}
 

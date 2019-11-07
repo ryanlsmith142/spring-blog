@@ -60,6 +60,15 @@ public class PostController {
         return "posts/historyOfPost";
     }
 
+    @GetMapping("/posts/{id}/viewImages")
+    public String getImages(@PathVariable long id, Model vModel) {
+        Post post = postDao.getOne(id);
+
+        vModel.addAttribute("post", post);
+
+        return "posts/viewImages";
+    }
+
     @GetMapping("/posts/create")
     @ResponseBody
     public String showForm() {
