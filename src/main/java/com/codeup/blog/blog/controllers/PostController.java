@@ -42,10 +42,12 @@ public class PostController {
     }
 
     @PostMapping("/posts/edit")
-    public String editPost(@RequestParam(name="id") String id, @RequestParam(name="title") String title, @RequestParam(name="body") String body, Model vModel) {
+    public String editPost(@RequestParam(name="id") String id, @RequestParam(name="title") String newTitle, @RequestParam(name="body") String newBody, Model vModel) {
         long postId = Long.parseLong(id);
-        Post newPost = new Post(postId, title, body);
-        postDao.save(newPost);
+        Post oldPost = postDao.getOne(postId);
+        oldPost.setTitle(newTitle);
+        oldPost.setBody(newBody);
+        postDao.save(oldPost);
         vModel.addAttribute("posts", postDao.findAll());
         return "posts/index";
     }
