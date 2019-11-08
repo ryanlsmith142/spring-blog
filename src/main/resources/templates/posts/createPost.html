@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Create a Post</title>
+    <th:block th:replace="fragments/header :: main-header"/>
+</head>
+<body>
+
+<th:block th:replace="fragments/navbar"/>
+<div>
+    <form action="/posts/create/1" method="POST">
+        <input type="text" name="title">
+        <input type="text" name="body">
+        <input type="submit">
+    </form>
+</div>
+
+<th:block th:replace="fragments/modal :: modal"/>
+<th:block th:replace="fragments/footer :: main-footer"/>
+</body>
+</html>

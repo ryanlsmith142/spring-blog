@@ -8,15 +8,18 @@
 <body>
 
     <th:block th:replace="fragments/navbar"/>
-    <div th:each="post : ${posts}">
-        <a th:text="${post.title}" th:href="@{'/posts/' + ${post.id}}"></a>
-        <p th:text="${post.body}"></p>
-        <div th:each="tag : ${post.tags}">
-            <p th:text="${tag.name}"></p>
+    <main>
+        <div th:each="post : ${posts}">
+            <a th:text="${post.title}" th:href="@{'/posts/' + ${post.id}}"></a>
+            <p>Author: <span th:text="${post.user.email}"></span></p>
+            <p th:text="${post.body}"></p>
+            <div th:each="tag : ${post.tags}">
+                <p th:text="${tag.name}"></p>
+            </div>
         </div>
-    </div>
 
-    <th:block th:replace="fragments/modal :: modal"/>
+        <th:block th:replace="fragments/modal :: modal"/>
+    </main>
     <th:block th:replace="fragments/footer :: main-footer"/>
 </body>
 </html>

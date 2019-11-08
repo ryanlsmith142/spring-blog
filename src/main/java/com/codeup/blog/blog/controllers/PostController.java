@@ -1,6 +1,7 @@
 package com.codeup.blog.blog.controllers;
 
 import com.codeup.blog.blog.dao.PostRepository;
+import com.codeup.blog.blog.dao.UserRepository;
 import com.codeup.blog.blog.models.Post;
 import com.codeup.blog.blog.models.PostDetails;
 import com.codeup.blog.blog.models.Tag;
@@ -18,10 +19,13 @@ public class PostController {
 
     private final PostRepository postDao;
 
+    private final UserRepository userDao;
 
-    public PostController(PostRepository postDao) {
+    public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
+        this.userDao = userDao;
     }
+
 
     @GetMapping("/posts")
     public String index(Model vModel) {
@@ -71,15 +75,14 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    @ResponseBody
     public String showForm() {
-        return "view the form for creating a post";
+        return "posts/createPost";
     }
 
-    @PostMapping("/posts/create")
-    @ResponseBody
-    public String createPost(@RequestParam String title, @RequestParam String body) {
-        return "create a new post";
+    @PostMapping("/posts/create/{id}")
+    public String createPost(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
+        postDao.save(new Post(title, body, id));
+        return "redirect: /posts";
     }
 
 }

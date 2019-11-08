@@ -21,7 +21,6 @@ public class Post {
     @OneToOne
     private PostDetails postDetails;
 
-
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List<PostImage> images;
 
@@ -57,6 +56,11 @@ public class Post {
         this.title = title;
         this.body = body;
     }
+
+    public Post(String title, String body, long user_id) {
+
+    }
+
 
     public long getId() {
         return id;
