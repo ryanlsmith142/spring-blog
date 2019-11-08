@@ -3,6 +3,7 @@ package com.codeup.blog.blog.controllers;
 import com.codeup.blog.blog.dao.PostRepository;
 import com.codeup.blog.blog.models.Post;
 import com.codeup.blog.blog.models.PostDetails;
+import com.codeup.blog.blog.models.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -68,6 +69,11 @@ public class PostController {
 
         return "posts/viewImages";
     }
+
+//    @GetMapping("/posts")
+//    public String getTags(Model vModel) {
+//
+//    }
 
     @GetMapping("/posts/create")
     @ResponseBody

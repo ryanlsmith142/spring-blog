@@ -20,3 +20,5 @@ insert into post_details (isAwesome, historyOfPost, topicDescription) values (tr
 insert into post_details (isAwesome, historyOfPost, topicDescription) values (false, 'Felty''s syndrome, unspecified site', 'Felty''s syndrome, unspecified site');
 insert into post_details (isAwesome, historyOfPost, topicDescription) values (true, 'Unspecified injury of blood vessel of left ring finger', 'Unspecified injury of blood vessel of left ring finger');
 insert into post_details (isAwesome, historyOfPost, topicDescription) values (false, 'Other specified types of non-Hodgkin lymphoma, lymph nodes of head, face, and neck', 'Oth types of non-hodg lymph, nodes of head, face, and neck');
+
+

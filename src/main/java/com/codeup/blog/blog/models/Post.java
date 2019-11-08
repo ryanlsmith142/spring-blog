@@ -25,9 +25,21 @@ public class Post {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
     private List<PostImage> images;
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
+    @ManyToMany
     public List<PostImage> getImages() {
         return images;
     }
+
+    @ManyToMany(mappedBy = "posts")
+    private List<Tag> tags;
 
     public void setImages(List<PostImage> images) {
         this.images = images;
