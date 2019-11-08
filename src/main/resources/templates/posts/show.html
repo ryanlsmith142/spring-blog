@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <title>Individual Post</title>
+    <th:block th:replace="fragments/header :: main-header"/>
 </head>
 <body>
     <div>
         <h1 th:text="${post.title}"></h1>
         <p th:text="${post.body}"></p>
-        <input type="hidden" name="id" th:value="${post.id}">
+        <form th:action="@{'/posts/' + ${post.id} + '/delete' }" method="POST">
+            <button type="submit">Delete Post</button>
+        </form>
+
+        <button th:id="${post.id}" class="openModal" type="button">Edit</button>
     </div>
+    <th:block th:replace="fragments/modal :: modal"/>
+    <th:block th:replace="fragments/footer :: main-footer"/>
 </body>
 </html>

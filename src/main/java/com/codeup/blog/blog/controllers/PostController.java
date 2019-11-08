@@ -70,11 +70,6 @@ public class PostController {
         return "posts/viewImages";
     }
 
-//    @GetMapping("/posts")
-//    public String getTags(Model vModel) {
-//
-//    }
-
     @GetMapping("/posts/create")
     @ResponseBody
     public String showForm() {
