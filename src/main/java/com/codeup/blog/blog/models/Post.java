@@ -41,6 +41,11 @@ public class Post {
     @ManyToMany(mappedBy = "posts")
     private List<Tag> tags;
 
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public void setImages(List<PostImage> images) {
         this.images = images;
     }
@@ -85,6 +90,13 @@ public class Post {
         this.postDetails = petDetails;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
 
 
