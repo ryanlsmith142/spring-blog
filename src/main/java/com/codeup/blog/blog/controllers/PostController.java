@@ -47,7 +47,7 @@ public class PostController {
         oldPost.setTitle(newTitle);
         oldPost.setBody(newBody);
         postDao.save(oldPost);
-        return "redirect:/posts";
+        return "redirect:/posts/{id}";
     }
 
     @GetMapping("/posts/{id}/historyOfPost")
