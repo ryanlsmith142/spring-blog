@@ -75,14 +75,16 @@ public class PostController {
     }
 
     @GetMapping("/posts/create")
-    public String showForm() {
-        return "posts/createPost";
+    public String showForm(Model vModel) {
+        vModel.addAttribute("post", new Post());
+        return "posts/create";
     }
 
-    @PostMapping("/posts/create/{id}")
-    public String createPost(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
-        postDao.save(new Post(title, body, id));
-        return "redirect: /posts";
+    @PostMapping("/posts/create")
+    public String createPost(@ModelAttribute Post postToBeCreated) {
+        postToBeCreated.setUser(userDao.getOne(1L));
+        Post newPost = postDao.save(postToBeCreated);
+        return "redirect:/posts";
     }
 
 }

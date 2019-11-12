@@ -5,18 +5,17 @@
     <title>Create a Post</title>
     <th:block th:replace="fragments/header :: main-header"/>
 </head>
-<body>
-
+<body class="container">
 <th:block th:replace="fragments/navbar"/>
-<div>
-    <form action="/posts/create/1" method="POST">
-        <input type="text" name="title">
-        <input type="text" name="body">
+<main>
+    <form th:action="@{/posts/create}" th:method="POST" th:object="${post}">
+        <label for="title">Title:</label>
+        <input th:field="*{title}">
+        <label for="body">Body:</label>
+        <textarea th:field="*{body}"></textarea>
         <input type="submit">
     </form>
-</div>
-
-<th:block th:replace="fragments/modal :: modal"/>
+</main>
 <th:block th:replace="fragments/footer :: main-footer"/>
 </body>
 </html>
