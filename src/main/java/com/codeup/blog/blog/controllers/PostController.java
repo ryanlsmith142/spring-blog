@@ -5,6 +5,8 @@ import com.codeup.blog.blog.dao.UserRepository;
 import com.codeup.blog.blog.models.Post;
 import com.codeup.blog.blog.models.PostDetails;
 import com.codeup.blog.blog.models.Tag;
+import com.codeup.blog.blog.services.EmailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +22,9 @@ public class PostController {
     private final PostRepository postDao;
 
     private final UserRepository userDao;
+
+    @Autowired
+    EmailService emailService;
 
     public PostController(PostRepository postDao, UserRepository userDao) {
         this.postDao = postDao;
@@ -84,6 +89,7 @@ public class PostController {
     public String createPost(@ModelAttribute Post postToBeCreated) {
         postToBeCreated.setUser(userDao.getOne(1L));
         Post newPost = postDao.save(postToBeCreated);
+        emailService.prepareAndSend(newPost, "Post Created", "A post was created with the id of " + newPost.getId());
         return "redirect:/posts";
     }
 
