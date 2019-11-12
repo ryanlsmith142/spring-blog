@@ -94,5 +94,9 @@ insert into post_tag (post_id, tag_id) values (2, 2);
 
 insert into users (email, password, username) values ('admin@email.com', 'password', 'ryan');
 
+insert into emails (body, sender, subject, user_id) values('Hey heres the body', 'Izzy', 'New Post Created', 1 );
+insert into emails (body, sender, subject, user_id) values('What an amazing blog Post Ryan, Youre my hero', 'Mark', 'New Post Created', 1 );
+insert into emails (body, sender, subject, user_id) values('Hey heres the body', 'Lemman', 'New Post Created', 1 );
+
 
 

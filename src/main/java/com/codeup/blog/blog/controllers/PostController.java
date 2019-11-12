@@ -2,9 +2,7 @@ package com.codeup.blog.blog.controllers;
 
 import com.codeup.blog.blog.dao.PostRepository;
 import com.codeup.blog.blog.dao.UserRepository;
-import com.codeup.blog.blog.models.Post;
-import com.codeup.blog.blog.models.PostDetails;
-import com.codeup.blog.blog.models.Tag;
+import com.codeup.blog.blog.models.*;
 import com.codeup.blog.blog.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,12 +21,15 @@ public class PostController {
 
     private final UserRepository userDao;
 
+    private final UserRepository emailDao;
+
     @Autowired
     EmailService emailService;
 
-    public PostController(PostRepository postDao, UserRepository userDao) {
+    public PostController(PostRepository postDao, UserRepository userDao, UserRepository emailDao) {
         this.postDao = postDao;
         this.userDao = userDao;
+        this.emailDao = emailDao;
     }
 
 
@@ -90,7 +91,16 @@ public class PostController {
         postToBeCreated.setUser(userDao.getOne(1L));
         Post newPost = postDao.save(postToBeCreated);
         emailService.prepareAndSend(newPost, "Post Created", "A post was created with the id of " + newPost.getId());
+//        emailDao.save(new Email("What a great post", "Hey thanks for creating a new post", "Ryan", userDao.getOne(1L)));
         return "redirect:/posts";
     }
+
+    @GetMapping("/posts/inbox")
+    public String showEmails(Model vModel) {
+        vModel.addAttribute("email", emailDao.getOne(1L));
+        return "posts/inbox";
+    }
+
+
 
 }

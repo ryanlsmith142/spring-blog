@@ -24,6 +24,8 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts;
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Email> emails;
     public User(){}
 
     public User(String username, String email, String password) {
