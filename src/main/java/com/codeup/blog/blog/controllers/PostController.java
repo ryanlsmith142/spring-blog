@@ -5,6 +5,7 @@ import com.codeup.blog.blog.dao.UserRepository;
 import com.codeup.blog.blog.models.*;
 import com.codeup.blog.blog.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -88,10 +89,11 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post postToBeCreated) {
-        postToBeCreated.setUser(userDao.getOne(1L));
+        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        postToBeCreated.setUser(currentUser);
         Post newPost = postDao.save(postToBeCreated);
-        emailService.prepareAndSend(newPost, "Post Created", "A post was created with the id of " + newPost.getId());
-//        emailDao.save(new Email("What a great post", "Hey thanks for creating a new post", "Ryan", userDao.getOne(1L)));
+//        emailService.prepareAndSend(newPost, "Post Created", "A post was created with the id of " + newPost.getId());
+////        emailDao.save(new Email("What a great post", "Hey thanks for creating a new post", "Ryan", userDao.getOne(1L)));
         return "redirect:/posts";
     }
 
