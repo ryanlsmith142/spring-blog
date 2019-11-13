@@ -6,6 +6,9 @@
         <a class="flex-sm-fill text-sm-center nav-link active" href="/">Home</a>
         <a class="flex-sm-fill text-sm-center nav-link" href="/posts">Blog Posts</a>
         <a class="flex-sm-fill text-sm-center nav-link mr-auto" href="/posts/create">Create a Post</a>
+        <form th:action="@{/logout}" th:method="post">
+            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+        </form>
         <h1>Best Blog On The Internet</h1>
         <form class="form-inline my-2 my-lg-0 ml-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
