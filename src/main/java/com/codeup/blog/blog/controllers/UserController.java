@@ -23,6 +23,7 @@ public class UserController {
     public String showSignupForm(Model vModel) {
         vModel.addAttribute("user", new User());
         return "users/sign-up";
+
     }
 
     @PostMapping("/sign-up")

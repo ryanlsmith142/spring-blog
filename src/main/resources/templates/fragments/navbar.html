@@ -4,8 +4,7 @@
 
 <th:block th:fragment="main-navbar">
     <nav class="nav nav-pills flex-column flex-sm-row sticky-top">
-        <a class="flex-sm-fill text-sm-center nav-link border border-primary m-1" href="/">Home</a>
-        <a class="flex-sm-fill text-sm-center nav-link border border-primary m-1" href="/posts">Blog Posts</a>
+        <a class="flex-sm-fill text-sm-center nav-link border border-primary m-1" href="/posts">Home</a>
         <a class="flex-sm-fill text-sm-center nav-link mr-auto border border-primary m-1" href="/posts/create">Create a Post</a>
         <form class="form-inline my-2 my-lg-0 ml-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -17,6 +16,10 @@
         <form sec:authorize="!isAuthenticated()" class="ml-auto border border-primary m-1" th:action="@{/login}" th:method="post">
             <button class="btn-link btn ml-auto">Login</button>
         </form>
+        <form sec:authorize="!isAuthenticated()" class="ml-auto border border-primary m-1" th:action="@{/sign-up}" th:method="GET">
+            <button class="btn-link btn ml-auto">Register</button>
+        </form>
+
 
 
     </nav>
