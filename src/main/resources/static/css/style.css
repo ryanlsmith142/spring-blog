@@ -28,6 +28,14 @@ main {
 #blogCards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
+}
+
+.card {
+    border-left: 15px solid #007bff;
+    border-top: 15px solid #007bff;
+    border-bottom: 15px solid #007bff;
+    border-right: 30px solid #007bff;
+    box-shadow: 10px 5px 5px red;
 }
 

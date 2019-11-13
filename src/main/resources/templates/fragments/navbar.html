@@ -6,24 +6,24 @@
     <nav class="nav nav-pills flex-column flex-sm-row sticky-top">
         <a class="flex-sm-fill text-sm-center nav-link border border-primary m-1" href="/posts">Home</a>
         <a class="flex-sm-fill text-sm-center nav-link mr-auto border border-primary m-1" href="/posts/create">Create a Post</a>
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <h1 class="ml-auto mr-auto">DogBlog Central</h1>
+        <form class="form-inline my-2 my-lg-0 m-1">
+            <input class="form-control mr-sm-2" th:action="@{/search}" th:method="POST" type="submit" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <form sec:authorize="isAuthenticated()" class="ml-auto border border-primary m-1" th:action="@{/logout}" th:method="post">
+        <form sec:authorize="isAuthenticated()" class="border border-primary m-1" th:action="@{/logout}" th:method="POST">
             <button class="btn-link btn ml-auto">Logout</button>
         </form>
-        <form sec:authorize="!isAuthenticated()" class="ml-auto border border-primary m-1" th:action="@{/login}" th:method="post">
+        <form sec:authorize="!isAuthenticated()" class="border border-primary m-1" th:action="@{/login}" th:method="POST">
             <button class="btn-link btn ml-auto">Login</button>
         </form>
-        <form sec:authorize="!isAuthenticated()" class="ml-auto border border-primary m-1" th:action="@{/sign-up}" th:method="GET">
+        <form sec:authorize="!isAuthenticated()" class="border border-primary m-1" th:action="@{/sign-up}" th:method="GET">
             <button class="btn-link btn ml-auto">Register</button>
         </form>
 
 
 
     </nav>
-    <h1>Blog Central</h1>
 </th:block>
 
 <!--Copy and paste to utilize this fragment in your file-->
