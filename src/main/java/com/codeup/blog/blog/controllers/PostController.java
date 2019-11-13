@@ -30,7 +30,6 @@ public class PostController {
         this.emailDao = emailDao;
     }
 
-
     @GetMapping("/posts")
     public String index(Model vModel) {
         vModel.addAttribute("posts", postDao.findAll());
@@ -98,7 +97,6 @@ public class PostController {
         vModel.addAttribute("email", emailDao.getOne(1L));
         return "posts/inbox";
     }
-
 
 
 }

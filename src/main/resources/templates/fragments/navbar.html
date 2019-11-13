@@ -7,8 +7,8 @@
         <a class="flex-sm-fill text-sm-center nav-link border border-primary m-1" href="/posts">Home</a>
         <a class="flex-sm-fill text-sm-center nav-link mr-auto border border-primary m-1" href="/posts/create">Create a Post</a>
         <h1 class="ml-auto mr-auto">DogBlog Central</h1>
-        <form class="form-inline my-2 my-lg-0 m-1">
-            <input class="form-control mr-sm-2" th:action="@{/search}" th:method="POST" type="submit" placeholder="Search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0 m-1" th:action="@{/search}" th:method="POST" >
+            <input class="form-control mr-sm-2" type="submit" name="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <form sec:authorize="isAuthenticated()" class="border border-primary m-1" th:action="@{/logout}" th:method="POST">
