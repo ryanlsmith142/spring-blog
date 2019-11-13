@@ -7,8 +7,8 @@
 </head>
 <body class="container">
     <th:block th:replace="fragments/navbar"/>
-    <main>
-        <div th:each="post : ${posts}" class="card" style="width: 18rem;">
+    <main id="blogCards">
+        <div th:each="post : ${posts}" class="card m-2" style="width: 18rem;">
             <th:block th:each="image : ${post.images}">
                 <img th:src="${image.url}" class="card-img-top" alt="...">
             </th:block>

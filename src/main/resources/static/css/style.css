@@ -24,3 +24,10 @@ main {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+#blogCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
