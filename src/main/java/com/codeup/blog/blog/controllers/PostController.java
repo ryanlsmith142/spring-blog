@@ -11,9 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Controller
 
 public class PostController {
@@ -92,8 +89,7 @@ public class PostController {
         User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         postToBeCreated.setUser(currentUser);
         Post newPost = postDao.save(postToBeCreated);
-//        emailService.prepareAndSend(newPost, "Post Created", "A post was created with the id of " + newPost.getId());
-////        emailDao.save(new Email("What a great post", "Hey thanks for creating a new post", "Ryan", userDao.getOne(1L)));
+        emailService.prepareAndSend(newPost, "Post Created", "A post was created with the id of " + newPost.getId());
         return "redirect:/posts";
     }
 

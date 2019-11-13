@@ -17,6 +17,10 @@ public class PostImage {
     @Column(nullable = false, columnDefinition="VARCHAR(1000)")
     private String url;
 
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
+
     public PostImage(String imageTitle, String url, Post post) {
         this.imageTitle = imageTitle;
         this.url = url;
@@ -57,9 +61,6 @@ public class PostImage {
         this.post = post;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    private Post post;
 
 
 }
