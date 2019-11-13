@@ -8,15 +8,22 @@
 <body class="container">
     <th:block th:replace="fragments/navbar"/>
     <main>
-        <div th:each="post : ${posts}">
-            <a th:text="${post.title}" th:href="@{'/posts/' + ${post.id}}"></a>
-            <p>Author: <span th:text="${post.user.email}"></span></p>
-            <p th:text="${post.body}"></p>
-            <div th:each="tag : ${post.tags}">
-                <p th:text="${tag.name}"></p>
+<!--        <div th:each="post : ${posts}">-->
+<!--            <a th:text="${post.title}" th:href="@{'/posts/' + ${post.id}}"></a>-->
+<!--            <p>By: <span th:text="${post.user.email}"></span></p>-->
+<!--            <p class="text" th:text="${post.body}"></p>-->
+<!--            <div th:each="tag : ${post.tags}">-->
+<!--                <p th:text="${tag.name}"></p>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div th:each="post : ${posts}" class="card" style="width: 18rem;">
+            <img th:src="${post.images}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><a th:text="${post.title}" th:href="@{'/posts/' + ${post.id}}"></a></h5>
+                <p>By <span th:text="${post.user.email}"></span></p>
+                <p class="text card-text" th:text="${post.body}"></p>
             </div>
         </div>
-
         <th:block th:replace="fragments/modal :: modal"/>
     </main>
     <th:block th:replace="fragments/footer :: main-footer"/>

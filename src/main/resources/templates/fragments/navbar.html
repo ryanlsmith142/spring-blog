@@ -3,20 +3,24 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <th:block th:fragment="main-navbar">
-    <nav class="nav nav-pills flex-column flex-sm-row">
-        <a class="flex-sm-fill text-sm-center nav-link active" href="/">Home</a>
-        <a class="flex-sm-fill text-sm-center nav-link" href="/posts">Blog Posts</a>
-        <a class="flex-sm-fill text-sm-center nav-link mr-auto" href="/posts/create">Create a Post</a>
-        <form sec:authorize="isAuthenticated()" th:action="@{/logout}" th:method="post">
-            <button class="btn-link btn" style="margin-top: 8px">Logout</button>
-        </form>
-        <h1>Best Blog On The Internet</h1>
+    <nav class="nav nav-pills flex-column flex-sm-row sticky-top">
+        <a class="flex-sm-fill text-sm-center nav-link border border-primary m-1" href="/">Home</a>
+        <a class="flex-sm-fill text-sm-center nav-link border border-primary m-1" href="/posts">Blog Posts</a>
+        <a class="flex-sm-fill text-sm-center nav-link mr-auto border border-primary m-1" href="/posts/create">Create a Post</a>
         <form class="form-inline my-2 my-lg-0 ml-auto">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+        <form sec:authorize="isAuthenticated()" class="ml-auto border border-primary m-1" th:action="@{/logout}" th:method="post">
+            <button class="btn-link btn ml-auto">Logout</button>
+        </form>
+        <form sec:authorize="!isAuthenticated()" class="ml-auto border border-primary m-1" th:action="@{/login}" th:method="post">
+            <button class="btn-link btn ml-auto">Login</button>
+        </form>
+
 
     </nav>
+    <h1>Blog Central</h1>
 </th:block>
 
 <!--Copy and paste to utilize this fragment in your file-->

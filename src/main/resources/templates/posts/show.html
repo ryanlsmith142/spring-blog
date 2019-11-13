@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8" />
     <title>Individual Post</title>
@@ -10,16 +11,19 @@
     <div>
         <h1 id="individualTitle" th:text="${post.title}"></h1>
         <p id="individualBody" th:text="${post.body}"></p>
-        <div>
 
+
+        <th:block th:if="${#authentication.principal.id == post.user.id}">
             <form th:action="@{'/posts/' + ${post.id} + '/delete' }" method="POST">
                 <button type="submit">Delete Post</button>
             </form>
             <input id="postId" type="hidden" th:value="${post.id}">
             <button id="openModal" type="button">Edit</button>
 
+        </th:block>
 
-        </div>
+
+
     </div>
     <th:block th:replace="fragments/modal :: modal"/>
     <th:block th:replace="fragments/footer :: main-footer"/>
