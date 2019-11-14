@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.List;
+
 @Controller
 
 public class PostController {
@@ -98,5 +100,16 @@ public class PostController {
         return "posts/inbox";
     }
 
+    //JSON
+
+    @GetMapping("/posts.json")
+    public @ResponseBody List<Post> viewAllPostsInJSONFormat() {
+        return postDao.findAll();
+    }
+
+    @GetMapping("/posts/ajax")
+    public String viewAllPostsWithAjax() {
+        return "posts/ajax";
+    }
 
 }
