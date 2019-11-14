@@ -30,7 +30,7 @@ public class PostController {
         this.emailDao = emailDao;
     }
 
-    @GetMapping("/posts")
+    @GetMapping("/")
     public String index(Model vModel) {
         vModel.addAttribute("posts", postDao.findAll());
         return "posts/index";
