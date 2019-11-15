@@ -12,13 +12,21 @@
         <h1 id="individualTitle" th:text="${post.title}"></h1>
         <p id="individualBody" th:text="${post.body}"></p>
 
-        <th:block th:if="${#authentication.principal.id == post.user.id}">
+        <th:block sec:authorize="isAuthenticated()">
+
+            <th:block th:if="${post.user.id == #authentication.principal.id}">
             <form th:action="@{'/posts/' + ${post.id} + '/delete' }" method="POST">
                 <button type="submit">Delete Post</button>
             </form>
             <input id="postId" type="hidden" th:value="${post.id}">
             <button id="openModal" type="button">Edit</button>
+            </th:block>
+
         </th:block>
+
+
+
+
 
 
 

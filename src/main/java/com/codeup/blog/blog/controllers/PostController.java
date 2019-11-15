@@ -38,6 +38,8 @@ public class PostController {
 
     @GetMapping("/posts/{id}")
     public String viewIndividualPost(@PathVariable long id, Model vModel) {
+//        User currentUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        vModel.addAttribute("currentUser", currentUser);
         vModel.addAttribute("post", postDao.getOne(id));
         return "posts/show";
     }
@@ -89,7 +91,7 @@ public class PostController {
         postToBeCreated.setUser(currentUser);
         Post newPost = postDao.save(postToBeCreated);
         emailService.prepareAndSend(newPost, "Post Created", "A post was created with the id of " + newPost.getId());
-        return "redirect:/posts";
+        return "redirect:/";
     }
 
     @GetMapping("/posts/inbox")

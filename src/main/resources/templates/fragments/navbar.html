@@ -14,15 +14,12 @@
         <form sec:authorize="isAuthenticated()" class="border border-primary m-1" th:action="@{/logout}" th:method="POST">
             <button class="btn-link btn ml-auto">Logout</button>
         </form>
-        <form sec:authorize="!isAuthenticated()" class="border border-primary m-1" th:action="@{/login}" th:method="POST">
-            <button class="btn-link btn ml-auto">Login</button>
-        </form>
+        <div sec:authorize="!isAuthenticated()" class="border border-primary m-1" th:href="@{/login}">
+            <a th:href="@{/login}" class="btn-link btn ml-auto">Login</a>
+        </div>
         <form sec:authorize="!isAuthenticated()" class="border border-primary m-1" th:action="@{/sign-up}" th:method="GET">
             <button class="btn-link btn ml-auto">Register</button>
         </form>
-
-
-
     </nav>
 </th:block>
 
