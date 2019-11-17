@@ -12,6 +12,14 @@
         <h1 id="individualTitle" th:text="${post.title}"></h1>
         <p id="individualBody" th:text="${post.body}"></p>
 
+        <th:block>
+            <form th:action="@{'/conversation/startConversation'}" method="POST">
+                <p>Start a conversation with this user.</p>
+                <input type="hidden" id="secondaryUserId" name="secondaryUserId">
+                <input type="submit">
+            </form>
+        </th:block>
+
         <th:block sec:authorize="isAuthenticated()">
 
             <th:block th:if="${post.user.id == #authentication.principal.id}">

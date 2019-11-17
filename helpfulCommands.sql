@@ -10,6 +10,8 @@ SELECT * FROM posts;
 
 SELECT * FROM emails;
 
+SELECT * FROM conversations;
+
 
 
 
