@@ -28,6 +28,9 @@ public class User {
     private List<Email> emails;
     public User(){}
 
+    @ManyToMany(mappedBy = "users")
+    private List<Conversation> conversations;
+
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
@@ -79,5 +82,13 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    public List<Conversation> getConversations() {
+        return conversations;
+    }
+
+    public void setConversations(List<Conversation> conversations) {
+        this.conversations = conversations;
     }
 }
