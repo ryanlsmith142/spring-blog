@@ -19,9 +19,10 @@
         <label for="password">Password</label>
         <input id="password" type="password" th:field="*{password}" />
 
-        <input value="Sign me up!" type="submit" />
+        <input id="sign-me-up" value="Sign me up!" type="submit" />
     </form>
 </main>
 <th:block th:replace="fragments/footer :: main-footer"/>
+<th:block th:replace="fragments/create-chat-user :: create-chat-user"/>
 </body>
 </html>

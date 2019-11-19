@@ -10,6 +10,8 @@ SELECT * FROM posts;
 
 SELECT * FROM emails;
 
+TRUNCATE users;
+
 
 
 
